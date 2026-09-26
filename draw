@@ -2,7 +2,7 @@
 
 <html class="light" lang="en"><head>
 <meta charset="utf-8"/>
-<title>Let's Draw Together | Blooming Kids Store</title>
+<title>Draw with Popo Panda | Blooming Kids Store</title>
 <meta name="description" content="A free drawing canvas for kids. Pick a colour, draw anything, and save it. From Blooming Kids Store and Popo Panda."/>
 <link rel="icon" type="image/png" href="images/popo-panda.png"/>
 <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
@@ -102,7 +102,7 @@
 <body class="bg-background font-[Plus_Jakarta_Sans] text-on-surface">
 
 <header class="px-4 pt-5 pb-3">
-<h1 class="text-2xl font-extrabold tracking-tight">Let's draw together</h1>
+<h1 class="text-2xl font-extrabold tracking-tight">Draw with Popo Panda</h1>
 <p class="text-sm text-on-surface-variant mt-1">Pick a colour and draw anything you like. It's free.</p>
 </header>
 
@@ -139,23 +139,7 @@
   </div>
 </div>
 
-<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface border-t border-outline-variant/30 flex justify-around items-center py-1.5">
-<a href="/" class="flex flex-col items-center gap-0.5 text-on-surface-variant">
-<span class="material-symbols-outlined text-[20px]">menu_book</span>
-<span class="text-[9px] font-semibold">Books</span></a>
-<a href="/draw" class="flex flex-col items-center gap-0.5 text-primary">
-<span class="material-symbols-outlined text-[20px]">draw</span>
-<span class="text-[9px] font-semibold">Draw</span></a>
-<a href="/paint" class="flex flex-col items-center gap-0.5 text-on-surface-variant">
-<span class="material-symbols-outlined text-[20px]">palette</span>
-<span class="text-[9px] font-semibold">Paint</span></a>
-<a href="/watch" class="flex flex-col items-center gap-0.5 text-on-surface-variant">
-<span class="material-symbols-outlined text-[20px]">play_circle</span>
-<span class="text-[9px] font-semibold">Watch</span></a>
-<a href="https://www.etsy.com/shop/PopoPandaprintables" target="_blank" rel="noopener" class="flex flex-col items-center gap-0.5 text-on-surface-variant">
-<span class="material-symbols-outlined text-[20px]">storefront</span>
-<span class="text-[9px] font-semibold">Etsy</span></a>
-</nav>
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-white/95 backdrop-blur border-t border-black/5 flex justify-around items-center pt-2 pb-3"><a href="/" class="flex flex-col items-center gap-1"><span class="w-10 h-10 rounded-xl flex items-center justify-center shadow-md transition-transform " style="background:#7c4dff;--tw-ring-color:#7c4dff"><span class="material-symbols-outlined text-white text-[22px]" style="font-variation-settings:'FILL' 1">menu_book</span></span><span class="text-[10px] font-extrabold" style="color:#7c4dff">Books</span></a><a href="/draw" class="flex flex-col items-center gap-1"><span class="w-10 h-10 rounded-xl flex items-center justify-center shadow-md transition-transform ring-2 ring-offset-2 ring-offset-white scale-110" style="background:#ff7a1a;--tw-ring-color:#ff7a1a"><span class="material-symbols-outlined text-white text-[22px]" style="font-variation-settings:'FILL' 1">draw</span></span><span class="text-[10px] font-extrabold" style="color:#ff7a1a">Draw</span></a><a href="/paint" class="flex flex-col items-center gap-1"><span class="w-10 h-10 rounded-xl flex items-center justify-center shadow-md transition-transform " style="background:#1faa59;--tw-ring-color:#1faa59"><span class="material-symbols-outlined text-white text-[22px]" style="font-variation-settings:'FILL' 1">palette</span></span><span class="text-[10px] font-extrabold" style="color:#1faa59">Paint</span></a><a href="/watch" class="flex flex-col items-center gap-1"><span class="w-10 h-10 rounded-xl flex items-center justify-center shadow-md transition-transform " style="background:#ff3d7f;--tw-ring-color:#ff3d7f"><span class="material-symbols-outlined text-white text-[22px]" style="font-variation-settings:'FILL' 1">play_circle</span></span><span class="text-[10px] font-extrabold" style="color:#ff3d7f">Watch</span></a><a href="https://www.etsy.com/shop/PopoPandaprintables" target="_blank" rel="noopener" class="flex flex-col items-center gap-1"><span class="w-10 h-10 rounded-xl flex items-center justify-center shadow-md transition-transform " style="background:#f1641e;--tw-ring-color:#f1641e"><span class="material-symbols-outlined text-white text-[22px]" style="font-variation-settings:'FILL' 1">storefront</span></span><span class="text-[10px] font-extrabold" style="color:#f1641e">Etsy</span></a></nav>
 <script>
 (function(){
   var c=document.getElementById('pad'),x=c.getContext('2d');
