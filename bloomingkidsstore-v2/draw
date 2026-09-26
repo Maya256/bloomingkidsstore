@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<title>Let's Draw Together | Blooming Kids Store</title>
+<meta name="description" content="A free drawing canvas for kids. Pick a colour, draw anything, and save it. From Blooming Kids Store and Popo Panda."/>
+<link rel="icon" type="image/png" href="images/popo-panda.png"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Be+Vietnam+Pro:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-container": "#47a873",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "on-tertiary-fixed": "#002110",
+                        "on-tertiary-fixed-variant": "#005230",
+                        "background": "#fbf9f8",
+                        "surface-variant": "#e4e2e2",
+                        "primary-container": "#a888d1",
+                        "outline-variant": "#ccc3d0",
+                        "on-secondary-container": "#7a2f4b",
+                        "surface": "#fbf9f8",
+                        "on-primary-container": "#3c1f61",
+                        "on-primary": "#ffffff",
+                        "on-primary-fixed-variant": "#55387b",
+                        "tertiary-fixed": "#95f7bb",
+                        "tertiary-fixed-dim": "#7adaa1",
+                        "secondary-fixed-dim": "#ffb1c8",
+                        "on-secondary-fixed-variant": "#772d49",
+                        "on-primary-fixed": "#28074d",
+                        "on-tertiary": "#ffffff",
+                        "surface-container-lowest": "#ffffff",
+                        "on-background": "#1b1c1c",
+                        "surface-container-low": "#f5f3f3",
+                        "on-secondary-fixed": "#3e001d",
+                        "on-surface": "#1b1c1c",
+                        "surface-container-highest": "#e4e2e2",
+                        "surface-container": "#efeded",
+                        "on-error": "#ffffff",
+                        "surface-tint": "#6e5095",
+                        "on-tertiary-container": "#00371e",
+                        "secondary-fixed": "#ffd9e2",
+                        "primary": "#6e5095",
+                        "on-surface-variant": "#4a454f",
+                        "error": "#ba1a1a",
+                        "on-error-container": "#93000a",
+                        "secondary-container": "#fe9cbb",
+                        "primary-fixed-dim": "#d9b9ff",
+                        "outline": "#7b7580",
+                        "inverse-on-surface": "#f2f0f0",
+                        "tertiary": "#006d41",
+                        "surface-dim": "#dbd9d9",
+                        "primary-fixed": "#eedcff",
+                        "inverse-surface": "#303030",
+                        "inverse-primary": "#d9b9ff",
+                        "surface-container-high": "#eae8e7",
+                        "surface-bright": "#fbf9f8",
+                        "secondary": "#944460"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "margin-mobile": "12px",
+                        "unit": "4px",
+                        "gutter-xs": "4px",
+                        "gutter-sm": "8px",
+                        "gutter-md": "12px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Plus Jakarta Sans"],
+                        "body": ["Be Vietnam Pro"]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+            vertical-align: middle;
+            font-size: 20px;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .ultra-dense-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+        }
+    </style>
+</head>
+<body class="bg-background font-[Plus_Jakarta_Sans] text-on-surface">
+
+<header class="px-4 pt-5 pb-3">
+<h1 class="text-2xl font-extrabold tracking-tight">Let's draw together</h1>
+<p class="text-sm text-on-surface-variant mt-1">Pick a colour and draw anything you like. It's free.</p>
+</header>
+
+<div class="px-3">
+<div class="rounded-2xl overflow-hidden border border-outline-variant/40 bg-white shadow-sm">
+<canvas id="pad" class="block w-full touch-none" style="height:58vh"></canvas>
+</div>
+</div>
+
+<div class="px-3 mt-3">
+<div id="swatches" class="flex flex-wrap gap-2 justify-center"></div>
+</div>
+
+<div class="px-3 mt-3 flex items-center justify-center gap-2">
+<button data-size="4"  class="sz px-3 py-2 rounded-full bg-surface-container text-xs font-bold">Thin</button>
+<button data-size="12" class="sz px-3 py-2 rounded-full bg-primary text-white text-xs font-bold">Medium</button>
+<button data-size="26" class="sz px-3 py-2 rounded-full bg-surface-container text-xs font-bold">Thick</button>
+<button id="eraser" class="px-3 py-2 rounded-full bg-surface-container text-xs font-bold">Eraser</button>
+</div>
+
+<div class="px-3 mt-3 mb-28 flex items-center justify-center gap-2">
+<button id="undo"  class="px-4 py-2.5 rounded-full bg-surface-container text-sm font-bold">Undo</button>
+<button id="clear" class="px-4 py-2.5 rounded-full bg-surface-container text-sm font-bold">Start over</button>
+<button id="save"  class="px-5 py-2.5 rounded-full bg-primary text-white text-sm font-extrabold">Save my drawing</button>
+</div>
+
+<div id="done" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/50 px-6">
+  <div class="bg-surface rounded-3xl p-6 max-w-sm w-full text-center">
+    <img src="images/popo-panda.png" alt="Popo Panda" class="w-20 h-20 mx-auto rounded-full object-cover"/>
+    <h2 class="text-xl font-extrabold mt-3">Beautiful work!</h2>
+    <p class="text-sm text-on-surface-variant mt-1">Your drawing has been saved to your device.</p>
+    <a href="/product-popo-3in1" class="block mt-4 px-4 py-3 rounded-full bg-primary text-white text-sm font-extrabold">See Popo's workbooks</a>
+    <button id="close" class="mt-2 w-full px-4 py-3 rounded-full bg-surface-container text-sm font-bold">Keep drawing</button>
+  </div>
+</div>
+
+<nav class="fixed bottom-0 left-0 w-full z-50 bg-surface border-t border-outline-variant/30 flex justify-around items-center py-1.5">
+<a href="/" class="flex flex-col items-center gap-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">menu_book</span>
+<span class="text-[9px] font-semibold">Books</span></a>
+<a href="/draw" class="flex flex-col items-center gap-0.5 text-primary">
+<span class="material-symbols-outlined text-[20px]">draw</span>
+<span class="text-[9px] font-semibold">Draw</span></a>
+<a href="/paint" class="flex flex-col items-center gap-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">palette</span>
+<span class="text-[9px] font-semibold">Paint</span></a>
+<a href="/watch" class="flex flex-col items-center gap-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">play_circle</span>
+<span class="text-[9px] font-semibold">Watch</span></a>
+<a href="https://www.etsy.com/shop/PopoPandaprintables" target="_blank" rel="noopener" class="flex flex-col items-center gap-0.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[20px]">storefront</span>
+<span class="text-[9px] font-semibold">Etsy</span></a>
+</nav>
+<script>
+(function(){
+  var c=document.getElementById('pad'),x=c.getContext('2d');
+  var colors=['#1b1c1c','#6e5095','#e53935','#fb8c00','#fdd835','#43a047','#1e88e5','#ec407a','#8d6e63','#ffffff'];
+  var col=colors[0],size=12,drawing=false,snaps=[];
+  function fit(){
+    var r=c.getBoundingClientRect(),d=window.devicePixelRatio||1;
+    var img=c.toDataURL();
+    c.width=r.width*d; c.height=r.height*d; x.scale(d,d);
+    x.fillStyle='#fff'; x.fillRect(0,0,r.width,r.height);
+    x.lineCap='round'; x.lineJoin='round';
+    var i=new Image(); i.onload=function(){x.drawImage(i,0,0,r.width,r.height);}; i.src=img;
+  }
+  var sw=document.getElementById('swatches');
+  colors.forEach(function(h,i){
+    var b=document.createElement('button');
+    b.className='w-9 h-9 rounded-full border-2 '+(i===0?'border-primary':'border-outline-variant/50');
+    b.style.background=h;
+    b.onclick=function(){col=h;[].forEach.call(sw.children,function(e){e.className=e.className.replace('border-primary','border-outline-variant/50');});
+      b.className=b.className.replace('border-outline-variant/50','border-primary');};
+    sw.appendChild(b);
+  });
+  [].forEach.call(document.querySelectorAll('.sz'),function(b){
+    b.onclick=function(){size=+b.dataset.size;
+      [].forEach.call(document.querySelectorAll('.sz'),function(e){e.className=e.className.replace('bg-primary text-white','bg-surface-container');});
+      b.className=b.className.replace('bg-surface-container','bg-primary text-white');};
+  });
+  document.getElementById('eraser').onclick=function(){col='#ffffff';};
+  function pos(e){var r=c.getBoundingClientRect();var t=e.touches?e.touches[0]:e;return{x:t.clientX-r.left,y:t.clientY-r.top};}
+  function snap(){snaps.push(c.toDataURL()); if(snaps.length>15)snaps.shift();}
+  function start(e){e.preventDefault();snap();drawing=true;var p=pos(e);x.beginPath();x.moveTo(p.x,p.y);}
+  function move(e){if(!drawing)return;e.preventDefault();var p=pos(e);x.strokeStyle=col;x.lineWidth=size;x.lineTo(p.x,p.y);x.stroke();}
+  function end(){drawing=false;}
+  c.addEventListener('mousedown',start); c.addEventListener('mousemove',move);
+  window.addEventListener('mouseup',end);
+  c.addEventListener('touchstart',start,{passive:false});
+  c.addEventListener('touchmove',move,{passive:false});
+  c.addEventListener('touchend',end);
+  document.getElementById('undo').onclick=function(){
+    if(!snaps.length)return; var d=snaps.pop(),i=new Image(),r=c.getBoundingClientRect();
+    i.onload=function(){x.clearRect(0,0,r.width,r.height);x.drawImage(i,0,0,r.width,r.height);}; i.src=d;};
+  document.getElementById('clear').onclick=function(){snap();var r=c.getBoundingClientRect();x.fillStyle='#fff';x.fillRect(0,0,r.width,r.height);};
+  document.getElementById('save').onclick=function(){
+    var a=document.createElement('a'); a.download='my-popo-drawing.png'; a.href=c.toDataURL('image/png'); a.click();
+    var m=document.getElementById('done'); m.classList.remove('hidden'); m.classList.add('flex');};
+  document.getElementById('close').onclick=function(){var m=document.getElementById('done');m.classList.add('hidden');m.classList.remove('flex');};
+  window.addEventListener('resize',fit); fit();
+})();
+</script>
+</body></html>
